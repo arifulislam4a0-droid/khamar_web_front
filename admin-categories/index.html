@@ -1,0 +1,1250 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ক্যাটাগরি ম্যানেজ | খামার কেন্দুয়া এগ্রো</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <style>
+    :root {
+      --bg: #f6f8f4;
+      --surface: #fff;
+      --surface-soft: #f2f6ee;
+      --line: #dbe6d3;
+      --text: #172218;
+      --muted: #617061;
+      --brand: #2f6b3d;
+      --brand-dark: #1f4b2a;
+      --danger: #b42318;
+      --shadow: 0 10px 30px rgba(31, 49, 28, 0.08);
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+      background: linear-gradient(180deg, #f8fbf6 0%, #f4f8f2 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .site-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .container {
+      width: min(calc(100% - 20px), var(--container));
+      margin-inline: auto;
+    }
+
+    .top-strip {
+      min-height: 38px;
+      background: #203a24;
+      color: #e6f0e8;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+    }
+
+    .top-strip .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(86, 166, 29, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(23, 34, 24, 0.06);
+    }
+
+    .header-inner {
+      min-height: 72px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .logo {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .brand-title {
+      margin: 0;
+      font-size: clamp(20px, 2.4vw, 28px);
+      line-height: 1.05;
+      font-weight: 800;
+    }
+
+    .brand-sub {
+      margin-top: 3px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn,
+    .btn {
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 15px;
+      border-radius: 14px;
+      transition: 0.18s ease;
+    }
+
+    .icon-btn {
+      width: 44px;
+      padding: 0;
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-dark);
+    }
+
+    .btn-soft {
+      background: #eef6ea;
+      color: var(--brand-dark);
+      border: 1px solid #d7e7cf;
+    }
+
+    .btn-outline {
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .btn-danger {
+      background: #fff2f0;
+      border: 1px solid #ffd7d2;
+      color: var(--danger);
+    }
+
+    .phone-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 18px 0 12px;
+    }
+
+    .hero-card {
+      background:
+        radial-gradient(circle at 95% 8%,
+          rgba(124, 179, 66, 0.13),
+          transparent 20%),
+        radial-gradient(circle at 6% 95%,
+          rgba(76, 175, 80, 0.12),
+          transparent 24%),
+        linear-gradient(135deg, #fbfdf8 0%, #edf6e6 100%);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.08;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+      max-width: 62ch;
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 40px;
+      padding: 8px 13px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+    }
+
+    .mini-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 15px;
+    }
+
+    .section {
+      padding: 14px 0 24px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(22px, 2.6vw, 30px);
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .quick-scroll {
+      display: flex;
+      gap: 10px;
+      overflow: auto;
+      padding-bottom: 6px;
+    }
+
+    .quick-link {
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 10px 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .product-media {
+      position: relative;
+      aspect-ratio: 4/3;
+      background: #ecf4e8;
+      overflow: hidden;
+    }
+
+    .product-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .badge-top {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .slide-nav {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.76);
+    }
+
+    .slide-nav span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #c7d4c2;
+    }
+
+    .slide-nav span.active {
+      background: var(--brand);
+    }
+
+    .card-body {
+      padding: 15px;
+    }
+
+    .product-title {
+      margin: 0 0 9px;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.4;
+      min-height: 48px;
+    }
+
+    .product-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      min-height: 46px;
+    }
+
+    .product-price {
+      margin: 11px 0 10px;
+    }
+
+    .price-now {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--brand-dark);
+    }
+
+    .price-old {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .price-old b {
+      text-decoration: line-through;
+    }
+
+    .button-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+      margin-top: 12px;
+    }
+
+    .notice {
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px dashed #c6d4bf;
+      color: var(--muted);
+    }
+
+    .footer {
+      margin-top: auto;
+      background: #1e3621;
+      color: #e7efe7;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 0.8fr;
+      gap: 18px;
+      padding: 24px 0;
+    }
+
+    .footer p,
+    .footer a {
+      color: #d2dfd3;
+      font-size: 14px;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .footer h3,
+    .footer h4 {
+      margin: 0 0 10px;
+    }
+
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 24, 16, 0.45);
+      z-index: 70;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.2s ease;
+    }
+
+    .drawer-backdrop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: min(320px, 88vw);
+      transform: translateX(-100%);
+      z-index: 80;
+      background: #fff;
+      border-right: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      transition: 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .drawer.show {
+      transform: translateX(0);
+    }
+
+    .drawer-head {
+      min-height: 66px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .drawer-body {
+      padding: 14px;
+      overflow: auto;
+    }
+
+    .drawer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .drawer-link {
+      display: block;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      font-weight: 600;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-left,
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .admin-nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .admin-nav a {
+      padding: 10px 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .kpi {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+
+    .kpi-label {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .kpi-value {
+      font-size: 28px;
+      font-weight: 800;
+      margin-top: 6px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field label {
+      font-weight: 700;
+    }
+
+    .input,
+    .select,
+    .textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid #cad8c4;
+      background: #fff;
+      outline: none;
+    }
+
+    .textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    .upload-box {
+      padding: 16px;
+      border-radius: 18px;
+      border: 2px dashed #b5cdb0;
+      background: #f8fbf5;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .preview {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .preview img {
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .preview-meta {
+      padding: 8px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .order-card,
+    .cat-card {
+      padding: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .small {
+      font-size: 13px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .sticky-block {
+      position: sticky;
+      top: 84px;
+      z-index: 15;
+    }
+
+    .gallery-main {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-main img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: contain;
+      background: #f7faf4;
+    }
+
+    .thumb-row {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .thumb {
+      border: 2px solid transparent;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: var(--shadow);
+      padding: 0;
+    }
+
+    .thumb.active {
+      border-color: var(--brand);
+    }
+
+    .thumb img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 24, 16, 0.55);
+      display: none;
+      z-index: 110;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    .modal-backdrop.show {
+      display: flex;
+    }
+
+    .modal {
+      width: min(100%, 620px);
+      max-height: 92vh;
+      overflow: auto;
+      background: #fff;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    @media (max-width: 1100px) {
+      .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .hero-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .kpi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .header-inner {
+        grid-template-columns: auto 1fr;
+      }
+
+      .header-right {
+        grid-column: 1 / -1;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .button-row {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .preview-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .thumb-row {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .hero-card {
+        padding: 18px;
+      }
+
+      .card-body {
+        padding: 14px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(calc(100% - 16px), var(--container));
+      }
+
+      .top-strip .container {
+        display: block;
+        padding: 8px 0;
+      }
+
+      .header-inner {
+        min-height: 66px;
+      }
+
+      .brand-title {
+        font-size: 20px;
+      }
+
+      .brand-sub {
+        font-size: 11px;
+      }
+
+      .grid,
+      .kpi-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .preview-grid,
+      .thumb-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .product-title {
+        min-height: auto;
+      }
+
+      .phone-pill {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+    <div id="header"></div>
+    <div id="drawerWrap"></div>
+    <main class="section">
+      <div class="container stack">
+        <section class="card">
+          <div class="card-body">
+            <div class="toolbar">
+              <div>
+                <h1 style="margin: 0 0 8px">সকল ক্যাটাগরি</h1>
+                <div class="muted">
+                  নতুন ক্যাটাগরি যোগ করুন, আগেরগুলো ইডিট করুন, ডিলিট করুন এবং
+                  সিরিয়াল পরিবর্তন করুন।
+                </div>
+              </div>
+              <div class="admin-nav">
+                <a href="../admin-dashboard/index.html">ড্যাশবোর্ড</a><a
+                  href="../admin-products/index.html">প্রোডাক্ট</a><a href="../admin-orders/index.html">অর্ডার</a>
+              </div>
+            </div>
+            <form id="addForm" class="form-grid" style="margin-top: 16px">
+              <div class="field full">
+                <label>ক্যাটাগরির নাম</label><input class="input" name="name" placeholder="যেমন: জ্বরের ওষুধ" />
+              </div>
+              <div class="field full">
+                <button class="btn btn-primary" type="submit">
+                  ক্যাটাগরি যোগ করুন
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+        <section id="catList" class="stack"></section>
+      </div>
+    </main>
+    <div id="footer"></div>
+  </div>
+  <script>
+    const SITE_NAME = "খামার কেন্দুয়া এগ্রো";
+    const SITE_PHONE = "০১৬০৯৩৪৭৭৪৬";
+    const BACKEND_ORIGIN = location.origin.includes(":5000")
+      ? location.origin
+      : "https://kka-api.onrender.com";
+    const API_BASE = `${BACKEND_ORIGIN}/api`;
+    const LOGO_URL = "https://kka-api.onrender.com/uploads/logo/logo.webp";
+    function escapeHtml(v = "") {
+      return String(v).replace(
+        /[&<>"']/g,
+        (m) =>
+          ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+          })[m],
+      );
+    }
+    function money(v) {
+      if (v === null || v === undefined || v === "") return "";
+      const n = Number(v);
+      if (Number.isNaN(n)) return v;
+      return new Intl.NumberFormat("bn-BD").format(n) + " টাকা";
+    }
+    function truncate(v = "", m = 95) {
+      v = String(v || "");
+      return v.length > m ? v.slice(0, m).trim() + "..." : v;
+    }
+    function fullImageUrl(url = "") {
+      if (!url) return LOGO_URL;
+      if (
+        url.startsWith("http://") ||
+        url.startsWith("https://") ||
+        url.startsWith("data:")
+      )
+        return url;
+      return `${BACKEND_ORIGIN}${url}`;
+    }
+    async function apiFetch(url, options = {}) {
+      const res = await fetch(url, options);
+      let data = null;
+      try {
+        data = await res.json();
+      } catch (e) { }
+      if (!res.ok) throw new Error(data?.message || "রিকোয়েস্ট সম্পন্ন হয়নি");
+      return data;
+    }
+    function showToast(message, type = "success") {
+      let host = document.getElementById("toastHost");
+      if (!host) {
+        host = document.createElement("div");
+        host.id = "toastHost";
+        host.style.cssText =
+          "position:fixed;right:12px;bottom:12px;z-index:200;display:grid;gap:10px;max-width:min(90vw,360px)";
+        document.body.appendChild(host);
+      }
+      const item = document.createElement("div");
+      item.style.cssText = `padding:13px 15px;border-radius:15px;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.2);background:${type === "error" ? "#b42318" : "#2f6b3d"}`;
+      item.textContent = message;
+      host.appendChild(item);
+      setTimeout(() => {
+        item.style.opacity = "0";
+        item.style.transform = "translateY(8px)";
+        item.style.transition = ".25s";
+      }, 2700);
+      setTimeout(() => item.remove(), 3100);
+    }
+    function getToken() {
+      return localStorage.getItem("adminToken") || "";
+    }
+    function setToken(t) {
+      localStorage.setItem("adminToken", t);
+    }
+    function clearToken() {
+      localStorage.removeItem("adminToken");
+      localStorage.removeItem("adminProfile");
+    }
+    function authHeaders(json = true) {
+      const h = {};
+      const token = getToken();
+      if (token) h.Authorization = `Bearer ${token}`;
+      if (json) h["Content-Type"] = "application/json";
+      return h;
+    }
+    async function requireAdmin() {
+      const token = getToken();
+      if (!token) {
+        location.href = "../admin-login/index.html";
+        return null;
+      }
+      try {
+        const data = await apiFetch(`${API_BASE}/admin-auth/profile`, {
+          headers: authHeaders(),
+        });
+        localStorage.setItem(
+          "adminProfile",
+          JSON.stringify(data.admin || {}),
+        );
+        return data.admin;
+      } catch (err) {
+        clearToken();
+        location.href = "../admin-login/index.html";
+        return null;
+      }
+    }
+    function adminLogout() {
+      clearToken();
+      location.href = "../admin-login/index.html";
+    }
+    function buildHeader({ admin = false, subtitle = "" } = {}) {
+      const homeLink = admin
+        ? "../admin-dashboard/index.html"
+        : "../index.html";
+      return `
+        
+        
+        
+        
+        <header class="header"><div class="container header-inner"><div class="brand"><button class="icon-btn btn-outline" onclick="toggleDrawer(true)">☰</button><a href="${homeLink}" class="brand"><img src="${LOGO_URL}" class="logo" alt="লোগো"><div><div class="brand-title">${SITE_NAME}</div><div class="brand-sub">${subtitle || "বিশ্বস্ত খামার ফার্মেসি"}</div></div></a></div><div></div><div class="header-right"><div class="phone-pill">📞 <a href="tel:01609347746">${SITE_PHONE}</a></div></div></div></header>`;
+    }
+    function buildFooter() {
+      return `<footer class="footer"><div class="container footer-grid"><div><h3>${SITE_NAME}</h3><p>আমাদের ওয়েবসাইট থেকে আপনার খামারের জন্য যেকোনো প্রকার প্রোডাক্ট সহজেই ঘরে বসেই অর্ডার করতে পারবেন।</p></div><div><h4>যোগাযোগ</h4><p>মোবাইল: <a href="tel:01609347746">${SITE_PHONE}</a></p><p>ওয়েবসাইটে অর্ডার করার জন্য বা প্রোডাক্ট নিয়ে যেকোনো প্রয়োজনে আমাদের সাথে যোগাযোগ করতে পারেন।</p></div><div><h4>ডেভেলপার</h4><p>ওয়েবসাইট তৈরি করেছেন : Md. Ariful Islam</p><p>যেকোনো ওয়েবসাইট তৈরির জন্য যোগাযোগ করুন : ০১৬০৯৩৪৭৭৪৬</p></div></div> <div class="copyright"
+     style="width:100%; text-align:center; margin:0 auto; padding:12px 10px; font-size:13px; border-top:1px solid rgba(255,255,255,0.1); color:#cfd8cf; background:#1b2f1e;">
+  © 2026 ${SITE_NAME}. All Rights Reserved.
+</div>   </footer>`;
+    }
+    function buildDrawer(categories = [], admin = false) {
+      const list = categories.length
+        ? categories
+          .map(
+            (cat) =>
+              `<a class="drawer-link" href="${admin ? `#cat-${cat._id}` : `#cat-${cat.slug}`}" onclick="toggleDrawer(false)">${escapeHtml(cat.name)}</a>`,
+          )
+          .join("")
+        : `<div class="notice">কোনো ক্যাটাগরি পাওয়া যায়নি।</div>`;
+      const extra = admin
+        ? `<a class="drawer-link" href="../admin-categories/index.html">সকল ক্যাটাগরি</a><a class="drawer-link" href="../admin-products/index.html">নতুন প্রোডাক্ট</a><a class="drawer-link" href="../admin-orders/index.html">অর্ডার ম্যানেজ</a>`
+        : "";
+      return `<div id="drawerBackdrop" class="drawer-backdrop" onclick="toggleDrawer(false)"></div><aside id="drawer" class="drawer"><div class="drawer-head"><strong>ক্যাটাগরি মেনু</strong><button class="icon-btn btn-outline" onclick="toggleDrawer(false)">✕</button></div><div class="drawer-body"><div class="drawer-links">${list}${extra}</div></div></aside>`;
+    }
+    function toggleDrawer(show) {
+      document.getElementById("drawer")?.classList.toggle("show", !!show);
+      document
+        .getElementById("drawerBackdrop")
+        ?.classList.toggle("show", !!show);
+    }
+    function priceHtml(product) {
+      const offer =
+        product.offerPrice !== null &&
+        product.offerPrice !== undefined &&
+        product.offerPrice !== "";
+      return offer
+        ? `<div class="price-old">রেগুলার মূল্য: <b>${money(product.price)}</b></div><div class="price-now">অফার মূল্য: ${money(product.offerPrice)}</div>`
+        : `<div class="price-now">মূল্য: ${money(product.price)}</div>`;
+    }
+    function createSliderMarkup(images = [], trending = false) {
+      const safe = images?.length ? images : [{ url: LOGO_URL }];
+      const first = fullImageUrl(safe[0].url);
+      const dots =
+        safe.length > 1
+          ? `<div class="slide-nav">${safe.map((_, i) => `<span class="${i === 0 ? "active" : ""}"></span>`).join("")}</div>`
+          : "";
+      return `<div class="product-media" data-images='${escapeHtml(JSON.stringify(safe))}'>${trending ? `<div class="badge-top">জনপ্রিয়</div>` : ""}<img src="${first}" alt="প্রোডাক্ট ছবি" loading="lazy">${dots}</div>`;
+    }
+    function activateSliders(scope = document) {
+      scope.querySelectorAll(".product-media[data-images]").forEach((box) => {
+        let images = [];
+        try {
+          images = JSON.parse(box.getAttribute("data-images"));
+        } catch (e) { }
+        if (images.length <= 1) return;
+        const img = box.querySelector("img");
+        const dots = [...box.querySelectorAll(".slide-nav span")];
+        let index = 0;
+        const setIndex = (i) => {
+          index = i;
+          img.src = fullImageUrl(images[index].url);
+          dots.forEach((dot, idx) =>
+            dot.classList.toggle("active", idx === index),
+          );
+        };
+        setInterval(() => setIndex((index + 1) % images.length), 3000);
+        box.addEventListener("click", () =>
+          setIndex((index + 1) % images.length),
+        );
+      });
+    }
+    function shareLink(url, title = "প্রোডাক্ট") {
+      if (navigator.share) {
+        navigator.share({ title, url }).catch(() => { });
+        return;
+      }
+      navigator.clipboard
+        .writeText(url)
+        .then(() => showToast("লিংক কপি হয়েছে"));
+    }
+    function orderModalTemplate(product) {
+      return `<div class="modal-head"><div><h3 style="margin:0 0 6px">অর্ডার করুন</h3><div class="muted">${escapeHtml(product.name || "প্রোডাক্ট")}</div></div><button class="icon-btn btn-outline" onclick="closeOrderModal()">✕</button></div><form id="orderForm" class="form-grid"><input type="hidden" name="productId" value="${product._id}"><div class="field"><label>আপনার নাম</label><input class="input" name="customerName" required></div><div class="field"><label>আপনার মোবাইল নম্বর</label><input class="input" name="phone" required></div><div class="field full"><label>আপনার ঠিকানা</label><textarea class="textarea" name="address" required></textarea></div><div class="field"><label>কত পিস প্রোডাক্ট লাগবে</label><input class="input" type="number" name="quantity" min="1" value="1" required></div><div class="field full"><button class="btn btn-primary" type="submit">কনফার্ম করুন</button></div></form>`;
+    }
+    function openOrderModal(product) {
+      const backdrop = document.getElementById("orderModalBackdrop");
+      const content = document.getElementById("orderModalContent");
+      if (!backdrop || !content) return;
+      content.innerHTML = orderModalTemplate(product);
+      backdrop.classList.add("show");
+      document
+        .getElementById("orderForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const btn = e.target.querySelector("button[type='submit']");
+          btn.disabled = true;
+          btn.textContent = "সাবমিট হচ্ছে...";
+          const payload = Object.fromEntries(
+            new FormData(e.target).entries(),
+          );
+          payload.quantity = Number(payload.quantity);
+          try {
+            const res = await apiFetch(`${API_BASE}/orders`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+            showToast(res.message || "অর্ডার সম্পন্ন হয়েছে");
+            closeOrderModal();
+          } catch (err) {
+            showToast(err.message, "error");
+          } finally {
+            btn.disabled = false;
+            btn.textContent = "কনফার্ম করুন";
+          }
+        });
+    }
+    function closeOrderModal() {
+      document.getElementById("orderModalBackdrop")?.classList.remove("show");
+    }
+    function productCard(product, adminMode = false) {
+      const shareHref = `../product-details/index.html?slug=${encodeURIComponent(product.slug)}`;
+      const productJson = encodeURIComponent(JSON.stringify(product));
+      return `<article class="card">${createSliderMarkup(product.images || [], !!product.trending)}<div class="card-body"><h3 class="product-title">${escapeHtml(product.name || "নাম দেওয়া হয়নি")}</h3><div class="product-price">${priceHtml(product)}</div><div class="product-desc">${escapeHtml(truncate(product.description || "বিবরণ দেওয়া হয়নি", 110))}</div>${adminMode ? `<div class="button-row"><a class="btn btn-soft" href="../admin-products/index.html?id=${product._id}">ইডিট</a><button class="btn btn-danger" onclick="deleteAdminProduct('${product._id}')">ডিলিট</button><button class="btn btn-outline" onclick="shareAdminProduct('${product._id}')">শেয়ার</button></div>` : `<div class="button-row"><button class="btn btn-primary" onclick='openOrderModal(JSON.parse(decodeURIComponent("${productJson}")))'>অর্ডার করুন</button><a class="btn btn-soft" href="${shareHref}">বিস্তারিত দেখুন</a><button class="btn btn-outline" onclick='shareLink(new URL("${shareHref}", location.href).href, "${escapeHtml(product.name || "প্রোডাক্ট")}")'>শেয়ার করুন</button></div>`}</div></article>`;
+    }
+  </script>
+  <script>
+    document.getElementById("header").innerHTML = buildHeader({
+      admin: true,
+      subtitle: "ক্যাটাগরি ব্যবস্থাপনা",
+    });
+    document.getElementById("footer").innerHTML = buildFooter();
+    let categoryState = [];
+    function catCard(cat, i) {
+      return `<div class="cat-card"><form class="form-grid edit-form" data-id="${cat._id}"><div class="field full"><label>ক্যাটাগরির নাম</label><input class="input" name="name" value="${escapeHtml(cat.name)}"></div><div class="toolbar full"><div class="pill">সিরিয়াল: ${i + 1}</div><div class="toolbar-right"><button class="btn btn-soft" type="button" onclick="moveCat('${cat._id}','up')">উপরে নিন</button><button class="btn btn-soft" type="button" onclick="moveCat('${cat._id}','down')">নিচে নিন</button><button class="btn btn-primary" type="submit">ইডিট সেভ</button><button class="btn btn-danger" type="button" onclick="removeCat('${cat._id}')">ডিলিট</button></div></div></form></div>`;
+    }
+    async function load() {
+      await requireAdmin();
+      try {
+        const res = await apiFetch(`${API_BASE}/categories`, {
+          headers: authHeaders(),
+        });
+        categoryState = res.data || [];
+        document.getElementById("drawerWrap").innerHTML = buildDrawer(
+          categoryState,
+          true,
+        );
+        document.getElementById("catList").innerHTML = categoryState.length
+          ? categoryState.map((cat, i) => catCard(cat, i)).join("")
+          : `<div class="notice">এখনও কোনো ক্যাটাগরি নেই।</div>`;
+        document.querySelectorAll(".edit-form").forEach((form) => {
+          form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const payload = Object.fromEntries(new FormData(form).entries());
+            try {
+              await apiFetch(`${API_BASE}/categories/${form.dataset.id}`, {
+                method: "PUT",
+                headers: authHeaders(),
+                body: JSON.stringify(payload),
+              });
+              showToast("ক্যাটাগরি আপডেট হয়েছে");
+              load();
+            } catch (err) {
+              showToast(err.message, "error");
+            }
+          });
+        });
+      } catch (err) {
+        document.getElementById("catList").innerHTML =
+          `<div class="notice">${escapeHtml(err.message)}</div>`;
+      }
+    }
+    document
+      .getElementById("addForm")
+      .addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const payload = Object.fromEntries(new FormData(e.target).entries());
+        try {
+          await apiFetch(`${API_BASE}/categories`, {
+            method: "POST",
+            headers: authHeaders(),
+            body: JSON.stringify(payload),
+          });
+          e.target.reset();
+          showToast("ক্যাটাগরি যোগ হয়েছে");
+          load();
+        } catch (err) {
+          showToast(err.message, "error");
+        }
+      });
+    async function removeCat(id) {
+      if (!confirm("আপনি কি নিশ্চিতভাবে এই ক্যাটাগরি ডিলিট করতে চান?"))
+        return;
+      try {
+        await apiFetch(`${API_BASE}/categories/${id}`, {
+          method: "DELETE",
+          headers: authHeaders(),
+        });
+        showToast("ক্যাটাগরি ডিলিট হয়েছে");
+        load();
+      } catch (err) {
+        showToast(err.message, "error");
+      }
+    }
+    async function moveCat(id, direction) {
+      const index = categoryState.findIndex((cat) => cat._id === id);
+      if (index < 0) return;
+      const target = direction === "up" ? index - 1 : index + 1;
+      if (target < 0 || target >= categoryState.length) return;
+      [categoryState[index], categoryState[target]] = [
+        categoryState[target],
+        categoryState[index],
+      ];
+      try {
+        await apiFetch(`${API_BASE}/categories/reorder/all`, {
+          method: "PUT",
+          headers: authHeaders(),
+          body: JSON.stringify({
+            items: categoryState.map((cat) => ({ id: cat._id })),
+          }),
+        });
+        showToast("সিরিয়াল আপডেট হয়েছে");
+        load();
+      } catch (err) {
+        showToast(err.message, "error");
+      }
+    }
+    load();
+  </script>
+</body>
+
+</html>
